@@ -72,4 +72,25 @@ public class Restaurant {
         return name;
     }
 
+    //TDD
+
+    public int calculateBill (String[] orders) throws itemNotFoundException{
+        if(orders.length>0){
+            int total=0;
+            for(String order:orders){
+                Item item = findItemByName(order);
+                if(item == null){
+                    throw new itemNotFoundException("Item not Found");
+                }
+                else{
+                    total = total + item.getPrice();
+                }
+            }
+            return total;
+        }
+        else{
+            return 0;
+        }
+    }
+
 }
